@@ -15,7 +15,7 @@
 		"browser-sync-spa": "~1.0.3",
 		"chalk": "~1.1.1",
 		"del": "~2.0.2",
-		"eslint": "~3.17.1",
+		"eslint": "~3.19.0",
 		"eslint-config-airbnb": "~14.1.0",
 		"eslint-loader": "~1.6.1",
 		"eslint-plugin-angular": "~1.5.1",
