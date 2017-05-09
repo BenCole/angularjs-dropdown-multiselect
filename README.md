@@ -3,33 +3,16 @@ This directive gives you a Bootstrap Dropdown with the power of AngularJS direct
 # Build commands
 
 ```
-	gulp build:component
+gulp build:component
 ```
 
 Bundles to /dist
 
 ```
-	gulp serve
+gulp serve
 ```
 Serves demo at localhost:3000
 
-# Features
-- Based on Bootstrap's dropdown.
-- jQuery is not necessary.
-- Seperated your data and the selection data. no modification to the data made.
-- Built-in search.
-- Complete control on the selected items model to fit it to your requirements.
-- Two view options: normal list and checkboxes.
-- Pre-selected values.
-- Limit selection count.
-- Grouping items by property.
-- Callback events.
-- Translation texts.
-- Scrollable list (useful for big lists)
-- Keyboard controls
-
-## Demo
-http://dotansimha.github.io/angularjs-dropdown-multiselect/
 
 ## Dependencies
 - required: AngularJS >= 1.5, Bootstrap >= 3.0
@@ -49,11 +32,6 @@ http://dotansimha.github.io/angularjs-dropdown-multiselect/
 	- `<script type="text/javascript" src="angularjs-dropdown-multiselect.js"></script>`.
 	- You can also use the minfined version (`angularjs-dropdown-multiselect.min.js`).
 3. Include the module in angular (i.e. in `app.js`) - `angularjs-dropdown-multiselect`
-
-
-## Contributing
-Issues and PR's are much appreciated. We're currently working on reducing them.
-When you create a new PR please make it against the develop branch when adding new features and to the fix branch when fixing small issues instead of master.
 
 ## Usage and Documentation
 See the documentation and examples in the GitHub pages:
