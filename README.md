@@ -1,5 +1,18 @@
 This directive gives you a Bootstrap Dropdown with the power of AngularJS directives.
 
+# Build commands
+
+```
+	gulp build:component
+```
+
+Bundles to /dist
+
+```
+	gulp serve
+```
+Serves demo at localhost:3000
+
 # Features
 - Based on Bootstrap's dropdown.
 - jQuery is not necessary.
