@@ -63,7 +63,7 @@
       <div class="dropdown-header">
         <input type="text"
                class="form-control searchField"
-               ng-keydown="keyDownSearchDefault($event); keyDownSearch($event, input.searchFilter);"
+               ng-keydown="keyDownSearchDefault($event); keyDownSearch($event, input.searchFilter); onSearch()"
                ng-style="{width: '100%'}"
                ng-model="input.searchFilter"
                placeholder="{{texts.searchPlaceholder}}" />

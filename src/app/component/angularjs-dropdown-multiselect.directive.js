@@ -11,11 +11,13 @@ export default function dropdownMultiselectDirective() {
 			searchFilter: '=?',
 			translationTexts: '=',
 			disabled: '=',
+			onSearch: '&',
+			asyncOptions: '=',
 		},
 		transclude: {
 			toggleDropdown: '?toggleDropdown',
 		},
 		controller,
 		templateUrl: 'app/component/angularjs-dropdown-multiselect.html',
-	};
+	}
 }

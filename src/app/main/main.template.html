@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6" style="margin-top: 40px;">
-			<div ng-dropdown-multiselect="" options="example9data" selected-model="example9model" extra-settings="example9settings"></div>
+			<div ng-dropdown-multiselect="" on-search="search()" async-options="" options="data" selected-model="model" extra-settings="settings"></div>
 		</div>
 		<div class="col-xs-12 col-sm-6">
-			<pre>{{example9model|json}}</pre>
+			<pre>{{model|json}}</pre>
 		</div>
 	</div>
 </div>
