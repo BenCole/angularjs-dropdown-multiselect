@@ -13,6 +13,8 @@ export default function dropdownMultiselectDirective() {
 			disabled: '=',
 			onSearch: '&',
 			asyncOptions: '=',
+			loaderClass: '=',
+			isLoading: '='
 		},
 		transclude: {
 			toggleDropdown: '?toggleDropdown',

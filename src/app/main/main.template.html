@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6" style="margin-top: 40px;">
-			<div ng-dropdown-multiselect="" on-search="search()" async-options="" options="data" selected-model="model" extra-settings="settings"></div>
+			<div ng-dropdown-multiselect="" is-loading="isLoading" on-search="search(term)" options="data" loader-class="'fa fa-spinner fa-spin fa-2 fa-fw'" selected-model="model" extra-settings="settings"></div>
 		</div>
 		<div class="col-xs-12 col-sm-6">
 			<pre>{{model|json}}</pre>

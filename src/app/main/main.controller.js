@@ -37,24 +37,19 @@ export default class MainController {
 		};
 		$scope.data = {};
 
-		$scope.search = function () {
-			console.log('doing a search from the parent');
+		$scope.isLoading = false;
+
+		$scope.search = function (input) {
+			console.log('%c Searching with ' + input, 'background: green; color: white; display: block;');
+			$scope.isLoading = true;
 			$http.get('https://api.myjson.com/bins/hl32x').then(function(data) {
-				console.log(data.data);
+				$scope.isLoading = false;
 				$scope.data = data.data;
 			})
-			// $scope.data = [
-			// 	{ id: 1, label: 'async 1' },
-			// 	{ id: 2, label: 'async 2' },
-			// 	{ id: 3, label: 'aync 3' }
-			// ]
 		};
 
 		$scope.model = [];
-		$scope.data = [
-			{ id: 1, label: 'Ben' },
-			{ id: 2, label: 'Darryl' },
-			{ id: 3, label: 'Joao' }];
+		$scope.data = [];
 		$scope.settings = {
 			enableSearch: true,
 			showCheckAll: false,
