@@ -54,6 +54,8 @@ export default class MainController {
 			enableSearch: true,
 			showCheckAll: false,
 			showUncheckAll: false,
+			selectedToTop: true,
+			closeOnBlur: false,
 		};
 	}
 }

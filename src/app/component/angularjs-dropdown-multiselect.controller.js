@@ -323,9 +323,42 @@ export default function dropdownMultiselectController(
 		$scope.selectedGroup = null;
 	}
 
+	$scope.asyncSelected = [];
+
 	function setSelectedItem(option, dontRemove = false, fireSelectionChange) {
+
+		console.log("set selected item");
+
 		let exists;
 		let indexOfOption;
+
+		exists = $scope.selectedModel.indexOf(option) !== -1;
+		indexOfOption = $scope.selectedModel.indexOf(option);
+
+		if (!exists) {
+			console.log("doesn't exist");
+			$scope.asyncSelected.push(option);
+
+			let options = $scope.options;
+
+			options = options.filter(function(item) {
+				return item !== option;
+			})
+			$scope.options = options;
+
+		} else {
+
+			console.log("exists");
+			let asyncSelected = $scope.asyncSelected;
+			asyncSelected = asyncSelected.filter(function(item) {
+				return item !== option;
+			});
+			$scope.asyncSelected = asyncSelected;
+			$scope.options.push(option);
+		}
+
+		console.log("selected", option);
+
 		if (angular.isDefined(settings.idProperty)) {
 			exists = getIndexByProperty($scope.selectedModel, option, settings.idProperty) !== -1;
 			indexOfOption = getIndexByProperty($scope.selectedModel, option, settings.idProperty);
