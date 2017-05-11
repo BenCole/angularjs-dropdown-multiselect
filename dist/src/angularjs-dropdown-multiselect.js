@@ -480,12 +480,12 @@
 				console.log("doesn't exist");
 				$scope.asyncSelected.push(option);
 
-				var options = $scope.options;
+				// let options = $scope.options;
 
-				options = options.filter(function (item) {
-					return item !== option;
-				});
-				$scope.options = options;
+				// options = options.filter(function(item) {
+				// 	return item !== option;
+				// })
+				// $scope.options = options;
 			} else {
 
 				console.log("exists");
@@ -499,45 +499,45 @@
 
 			console.log("selected", option);
 
-			if (angular.isDefined(settings.idProperty)) {
-				exists = getIndexByProperty($scope.selectedModel, option, settings.idProperty) !== -1;
-				indexOfOption = getIndexByProperty($scope.selectedModel, option, settings.idProperty);
-			} else {
-				exists = $scope.selectedModel.indexOf(option) !== -1;
-				indexOfOption = $scope.selectedModel.indexOf(option);
-			}
+			// if (angular.isDefined(settings.idProperty)) {
+			// 	exists = getIndexByProperty($scope.selectedModel, option, settings.idProperty) !== -1;
+			// 	indexOfOption = getIndexByProperty($scope.selectedModel, option, settings.idProperty);
+			// } else {
+			// 	exists = $scope.selectedModel.indexOf(option) !== -1;
+			// 	indexOfOption = $scope.selectedModel.indexOf(option);
+			// }
 
-			if (!dontRemove && exists) {
-				$scope.selectedModel.splice(indexOfOption, 1);
-				$scope.externalEvents.onItemDeselect(option);
-				if ($scope.settings.closeOnDeselect) {
-					$scope.close();
-				}
-			} else if (!exists && ($scope.settings.selectionLimit === 0 || $scope.selectedModel.length < $scope.settings.selectionLimit)) {
-				$scope.selectedModel.push(option);
-				if (fireSelectionChange) {
-					$scope.externalEvents.onItemSelect(option);
-				}
-				if ($scope.settings.closeOnSelect) {
-					$scope.close();
-				}
-				if ($scope.settings.selectionLimit > 0 && $scope.selectedModel.length === $scope.settings.selectionLimit) {
-					$scope.externalEvents.onMaxSelectionReached();
-				}
-			} else if ($scope.settings.selectionLimit === 1 && !exists && $scope.selectedModel.length === $scope.settings.selectionLimit) {
-				$scope.selectedModel.splice(0, 1);
-				$scope.selectedModel.push(option);
-				if (fireSelectionChange) {
-					$scope.externalEvents.onItemSelect(option);
-				}
-				if ($scope.settings.closeOnSelect) {
-					$scope.close();
-				}
-			}
-			if (fireSelectionChange) {
-				$scope.externalEvents.onSelectionChanged();
-			}
-			$scope.selectedGroup = null;
+			// if (!dontRemove && exists) {
+			// 	$scope.selectedModel.splice(indexOfOption, 1);
+			// 	$scope.externalEvents.onItemDeselect(option);
+			// 	if ($scope.settings.closeOnDeselect) {
+			// 		$scope.close();
+			// 	}
+			// } else if (!exists && ($scope.settings.selectionLimit === 0 || $scope.selectedModel.length < $scope.settings.selectionLimit)) {
+			// 	$scope.selectedModel.push(option);
+			// 	if (fireSelectionChange) {
+			// 		$scope.externalEvents.onItemSelect(option);
+			// 	}
+			// 	if ($scope.settings.closeOnSelect) {
+			// 		$scope.close();
+			// 	}
+			// 	if ($scope.settings.selectionLimit > 0 && $scope.selectedModel.length === $scope.settings.selectionLimit) {
+			// 		$scope.externalEvents.onMaxSelectionReached();
+			// 	}
+			// } else if ($scope.settings.selectionLimit === 1 && !exists && $scope.selectedModel.length === $scope.settings.selectionLimit) {
+			// 	$scope.selectedModel.splice(0, 1);
+			// 	$scope.selectedModel.push(option);
+			// 	if (fireSelectionChange) {
+			// 		$scope.externalEvents.onItemSelect(option);
+			// 	}
+			// 	if ($scope.settings.closeOnSelect) {
+			// 		$scope.close();
+			// 	}
+			// }
+			// if (fireSelectionChange) {
+			// 	$scope.externalEvents.onSelectionChanged();
+			// }
+			// $scope.selectedGroup = null;
 		}
 
 		function isChecked(option) {
