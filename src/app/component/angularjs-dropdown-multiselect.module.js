@@ -13,7 +13,7 @@ angular.module('angularjs-dropdown-multiselect', [])
 .directive('ngDropdownMultiselect', dropdownDirective)
 .filter('alreadySelectedFilter', function() {
 
-  return function(options, selectedModel) {
+  return function(options, selectedModel, idField) {
 
     var filtered = [];
     // loop through new options
@@ -21,8 +21,9 @@ angular.module('angularjs-dropdown-multiselect', [])
 
       var option = options[i];
 			  // filter down already selected IDs
-			if (selectedModel.filter(function(selected) { return selected.id == option.id; }).length === 0) {
+			if (selectedModel.filter(function(selected) { return selected[idField] == option[idField]; }).length === 0) {
 				// if there are no results, return the object to the filter
+        
         filtered.push(option);
 			}
     }

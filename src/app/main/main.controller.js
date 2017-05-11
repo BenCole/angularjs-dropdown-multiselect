@@ -42,7 +42,7 @@ export default class MainController {
 		$scope.search = function (input) {
 			console.log('%c Searching with ' + input, 'background: green; color: white; display: block;');
 			$scope.isLoading = true;
-			$http.get('https://api.myjson.com/bins/hl32x').then(function(data) {
+			$http.get('https://api.myjson.com/bins/s8gut').then(function(data) {
 				$scope.isLoading = false;
 				$scope.data = data.data;
 			})
@@ -56,6 +56,8 @@ export default class MainController {
 			showUncheckAll: false,
 			selectedToTop: true,
 			closeOnBlur: false,
+			displayProp: 'name',
+			idField: 'theid',
 		};
 	}
 }

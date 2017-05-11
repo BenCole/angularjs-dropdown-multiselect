@@ -60,6 +60,8 @@ export default function dropdownMultiselectController(
 		scrollableHeight: '300px',
 		closeOnBlur: true,
 		displayProp: 'label',
+		idField: 'meta_id',
+		searchPlaceholder: 'Search..',
 		enableSearch: false,
 		clearSearchOnClose: false,
 		selectionLimit: 0,

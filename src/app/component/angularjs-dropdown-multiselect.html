@@ -68,7 +68,7 @@
                ng-keyup="onSearch({term: input.searchFilter})",
                ng-style="{width: '100%'}"
                ng-model="input.searchFilter"
-               placeholder="{{texts.searchPlaceholder}}" />
+               placeholder="{{settings.searchPlaceholder}}" />
       </div>
     </li>
     <li ng-if="settings.enableSearch"
@@ -82,7 +82,7 @@
     <li ng-repeat="option in asyncSelected">
       <a ng-click="option.disabled || setSelectedItem(option, false, true)">
         <span class="glyphicon glyphicon-ok"></span>
-        {{ ::option.label }}
+        {{ ::option[settings.displayProp] }}
       </a>
     </li>
     <li ng-if="settings.groupBy"
@@ -121,7 +121,7 @@
     <li ng-if="!settings.groupBy"
         ng-class="{'active': isChecked(option) && settings.styleActive}"
         role="presentation"
-        ng-repeat="option in options | alreadySelectedFilter:selectedModel | orderBy:'':false:orderFunction">
+        ng-repeat="option in options | alreadySelectedFilter:selectedModel:settings.idField | orderBy:'':false:orderFunction">
       <a ng-keydown="option.disabled || keyDownLink($event)"
          role="menuitem"
          class="option"
