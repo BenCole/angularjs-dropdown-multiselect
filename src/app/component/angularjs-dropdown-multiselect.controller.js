@@ -325,7 +325,7 @@ export default function dropdownMultiselectController(
 		$scope.selectedGroup = null;
 	}
 
-	$scope.asyncSelected = [];
+	// $scope.asyncSelected = [];
 
 	function setSelectedItem(option, dontRemove = false, fireSelectionChange) {
 
@@ -339,7 +339,8 @@ export default function dropdownMultiselectController(
 
 		if (!exists) {
 			console.log("doesn't exist");
-			$scope.asyncSelected.push(option);
+			// $scope.asyncSelected.push(option);
+			$scope.selectedModel.push(option);
 
 			// let options = $scope.options;
 
@@ -351,14 +352,31 @@ export default function dropdownMultiselectController(
 		} else {
 
 			console.log("exists");
-			let asyncSelected = $scope.asyncSelected;
-			asyncSelected = asyncSelected.filter(function(item) {
-				return item !== option;
-			});
-			$scope.asyncSelected = asyncSelected;
-			$scope.options.push(option);
+
+			var s = $scope.selectedModel.length;
+			
+			while (s--) {
+					if ($scope.selectedModel[s][$scope.settings.idField] === option[$scope.settings.idField]) {
+
+						console.log("selectedModel Id field");
+						console.log($scope.selectedModel[s][$scope.settings.idField]);
+						console.log("option id field");
+						console.log(option[$scope.settings.idField]);
+
+						$scope.selectedModel.splice(s, 1);
+					}
+			}
+
+			// let asyncSelected = $scope.asyncSelected;
+			// asyncSelected = asyncSelected.filter(function(item) {
+			// 	return item !== option;
+			// });
+			// $scope.asyncSelected = asyncSelected;
+			// $scope.options.push(option);
 		}
 
+		// $scope.selectedModel = $scope.asyncSelected;
+		
 		console.log("selected", option);
 
 		// if (angular.isDefined(settings.idProperty)) {

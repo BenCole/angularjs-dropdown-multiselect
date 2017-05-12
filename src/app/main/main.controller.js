@@ -48,7 +48,10 @@ export default class MainController {
 			})
 		};
 
-		$scope.model = [];
+		$scope.model = [{
+    "theid": "5911d637e4139155e07323f9",
+    "name": "Manuela"
+  }];
 		$scope.data = [];
 		$scope.settings = {
 			enableSearch: true,

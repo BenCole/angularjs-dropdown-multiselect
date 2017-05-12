@@ -68,7 +68,7 @@
                ng-keyup="onSearch({term: input.searchFilter})",
                ng-style="{width: '100%'}"
                ng-model="input.searchFilter"
-               placeholder="{{settings.searchPlaceholder}}" />
+               placeholder="Seach here.." />
       </div>
     </li>
     <li ng-if="settings.enableSearch"
@@ -79,7 +79,7 @@
       <i class="{{ loaderClass }} searchLoader"></i>
     </li>
     <!--// async search options-->
-    <li ng-repeat="option in asyncSelected">
+    <li ng-repeat="option in selectedModel">
       <a ng-click="option.disabled || setSelectedItem(option, false, true)">
         <span class="glyphicon glyphicon-ok"></span>
         {{ ::option[settings.displayProp] }}
