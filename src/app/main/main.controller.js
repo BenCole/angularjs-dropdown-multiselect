@@ -48,10 +48,9 @@ export default class MainController {
 			})
 		};
 
-		$scope.model = [{
-    "theid": "5911d637e4139155e07323f9",
-    "name": "Manuela"
-  }];
+		$scope.model = [
+
+ ];
 		$scope.data = [];
 		$scope.settings = {
 			enableSearch: true,
@@ -61,6 +60,7 @@ export default class MainController {
 			closeOnBlur: false,
 			displayProp: 'name',
 			idField: 'theid',
+			isAsync: false
 		};
 	}
 }

@@ -82,6 +82,8 @@ export default function dropdownMultiselectController(
 		template: '{{getPropertyForObject(option, settings.displayProp)}}',
 		searchField: '$',
 		showAllSelectedText: false,
+		inputClasses: '',
+		async: false
 	};
 
 	const texts = {
@@ -288,7 +290,21 @@ export default function dropdownMultiselectController(
 				return $scope.texts.allSelectedText;
 			}
 
-			return `${totalSelected} ${$scope.texts.dynamicButtonTextSuffix}`;
+			let allSelected = ""
+
+		$scope.selectedModel.forEach(function(option, z) {
+
+				if ($scope.selectedModel.length === (z + 1)) { 
+					allSelected = allSelected + option[$scope.settings.displayProp];
+				} else {
+					allSelected = allSelected + option[$scope.settings.displayProp] + ", ";
+				}
+			});
+			
+
+			return `${allSelected}`;
+
+			// return `${totalSelected} ${$scope.texts.dynamicButtonTextSuffix}`;
 		}
 		return $scope.texts.buttonDefaultText;
 	}
@@ -342,6 +358,16 @@ export default function dropdownMultiselectController(
 			// $scope.asyncSelected.push(option);
 			$scope.selectedModel.push(option);
 
+			var o = $scope.options.length;
+
+			console.log($scope.options.length);
+
+			while (o--) {
+				if ($scope.options[o][$scope.settings.idField] === option[$scope.settings.idField]) {
+						$scope.options.splice(o, 1);
+					}
+			}
+
 			// let options = $scope.options;
 
 			// options = options.filter(function(item) {
@@ -357,14 +383,12 @@ export default function dropdownMultiselectController(
 			
 			while (s--) {
 					if ($scope.selectedModel[s][$scope.settings.idField] === option[$scope.settings.idField]) {
-
-						console.log("selectedModel Id field");
-						console.log($scope.selectedModel[s][$scope.settings.idField]);
-						console.log("option id field");
-						console.log(option[$scope.settings.idField]);
-
 						$scope.selectedModel.splice(s, 1);
 					}
+			}
+
+			if ($scope.settings.isAsync === false) {
+				$scope.options.push(option);
 			}
 
 			// let asyncSelected = $scope.asyncSelected;
