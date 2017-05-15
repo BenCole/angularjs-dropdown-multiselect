@@ -49,9 +49,14 @@ export default class MainController {
 		};
 
 		$scope.model = [
-
- ];
-		$scope.data = [];
+				{
+			"theid": "5911d637b16789968d94c107",
+			"name": "Brewer"
+			}
+ 	];
+		$scope.data = [
+		
+		];
 		$scope.settings = {
 			enableSearch: true,
 			showCheckAll: false,

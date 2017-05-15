@@ -17,16 +17,20 @@ angular.module('angularjs-dropdown-multiselect', [])
 
     var filtered = [];
     // loop through new options
-    for (var i = 0; i < options.length; i++) {
 
-      var option = options[i];
-			  // filter down already selected IDs
-			if (selectedModel.filter(function(selected) { return selected[idField] == option[idField]; }).length === 0) {
-				// if there are no results, return the object to the filter
-        
-        filtered.push(option);
-			}
+    if(options) {
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+          // filter down already selected IDs
+        if (selectedModel.filter(function(selected) { return selected[idField] == option[idField]; }).length === 0) {
+          // if there are no results, return the object to the filter
+          
+          filtered.push(option);
+        }
+      }
     }
+
+    
     // boom, return the Array after iteration's complete
     return filtered;
   };

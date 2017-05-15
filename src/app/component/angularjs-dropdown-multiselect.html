@@ -61,7 +61,7 @@
     <li ng-if="(settings.showCheckAll && settings.selectionLimit > 0) || settings.showUncheckAll || settings.showEnableSearchButton"
         class="divider">
     </li>
-    <li ng-if="settings.enableSearch">
+    <li ng-if="settings.enableSearch && settings.isAsync">
       <div class="dropdown-header">
         <input type="text"
                class="form-control searchField"
@@ -70,6 +70,15 @@
                ng-model-options='{ debounce: 500 }'
                ng-style="{width: '100%'}"
                ng-model="input.searchFilter"
+               placeholder="Search here.." />
+      </div>
+    </li>
+    <li ng-if="settings.enableSearch && !settings.isAsync">
+       <div class="dropdown-header">
+        <input type="text"
+               class="form-control searchField"
+               ng-style="{width: '100%'}"
+               ng-model="sync.searchFilter"
                placeholder="Search here.." />
       </div>
     </li>
@@ -121,10 +130,38 @@
         <span dm-dropdown-static-include="{{ settings.template }}"></span>
       </a>
     </li>
-    <li ng-if="!settings.groupBy"
+    
+    <li ng-if="!settings.groupBy && settings.isAsync"
         ng-class="{'active': isChecked(option) && settings.styleActive}"
         role="presentation"
         ng-repeat="option in options | alreadySelectedFilter:selectedModel:settings.idField | orderBy:'':false:orderFunction">
+      <a ng-keydown="option.disabled || keyDownLink($event)"
+         role="menuitem"
+         class="option"
+         tabindex="-1"
+         ng-click="option.disabled || setSelectedItem(option, false, true)"
+         ng-disabled="option.disabled">
+        <div ng-if="settings.checkBoxes"
+             class="checkbox">
+          <label>
+            <input class="checkboxInput"
+                   type="checkbox"
+                   ng-click="checkboxClick($event, option)"
+                   ng-checked="isChecked(option)" />
+            <span dm-dropdown-static-include="{{ settings.template }}"></span>
+          </label>
+        </div>
+        <span ng-if="!settings.checkBoxes"
+              data-ng-class="{'glyphicon glyphicon-ok': isChecked(option)}">
+        </span>
+        <span ng-if="!settings.checkBoxes"
+              dm-dropdown-static-include="{{ settings.template }}"></span>
+      </a>
+    </li>
+    <li ng-if="!settings.groupBy && !settings.isAsync"
+        ng-class="{'active': isChecked(option) && settings.styleActive}"
+        role="presentation"
+        ng-repeat="option in options | filter: sync.searchFilter">
       <a ng-keydown="option.disabled || keyDownLink($event)"
          role="menuitem"
          class="option"

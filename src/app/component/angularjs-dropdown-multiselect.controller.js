@@ -83,7 +83,7 @@ export default function dropdownMultiselectController(
 		searchField: '$',
 		showAllSelectedText: false,
 		inputClasses: '',
-		async: false
+		isAsync: false
 	};
 
 	const texts = {
@@ -341,7 +341,16 @@ export default function dropdownMultiselectController(
 		$scope.selectedGroup = null;
 	}
 
-	// $scope.asyncSelected = [];
+	// filter out selected if needed (when init values have been passed)
+
+	$scope.$watch('options', function(newVal, oldVal) {
+		var filterOptions = $filter('alreadySelectedFilter')($scope.options, $scope.selectedModel, $scope.settings.idField);
+		angular.copy(filterOptions, $scope.options);
+	})
+
+	// sync search model
+
+	$scope.sync = {};
 
 	function setSelectedItem(option, dontRemove = false, fireSelectionChange) {
 
@@ -360,20 +369,11 @@ export default function dropdownMultiselectController(
 
 			var o = $scope.options.length;
 
-			console.log($scope.options.length);
-
 			while (o--) {
 				if ($scope.options[o][$scope.settings.idField] === option[$scope.settings.idField]) {
 						$scope.options.splice(o, 1);
 					}
 			}
-
-			// let options = $scope.options;
-
-			// options = options.filter(function(item) {
-			// 	return item !== option;
-			// })
-			// $scope.options = options;
 
 		} else {
 
@@ -390,13 +390,6 @@ export default function dropdownMultiselectController(
 			if ($scope.settings.isAsync === false) {
 				$scope.options.push(option);
 			}
-
-			// let asyncSelected = $scope.asyncSelected;
-			// asyncSelected = asyncSelected.filter(function(item) {
-			// 	return item !== option;
-			// });
-			// $scope.asyncSelected = asyncSelected;
-			// $scope.options.push(option);
 		}
 
 		// $scope.selectedModel = $scope.asyncSelected;
