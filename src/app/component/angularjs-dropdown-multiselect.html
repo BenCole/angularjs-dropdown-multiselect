@@ -161,7 +161,7 @@
     <li ng-if="!settings.groupBy && !settings.isAsync"
         ng-class="{'active': isChecked(option) && settings.styleActive}"
         role="presentation"
-        ng-repeat="option in options | filter: sync.searchFilter">
+        ng-repeat="option in options |  alreadySelectedFilter:selectedModel:settings.idField | filter: sync.searchFilter ">
       <a ng-keydown="option.disabled || keyDownLink($event)"
          role="menuitem"
          class="option"
